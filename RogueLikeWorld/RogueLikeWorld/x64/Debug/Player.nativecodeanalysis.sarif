@@ -1,0 +1,51 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.41.34123.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/users/peera/onedrive/documents/github/roguelikeworld/roguelikeworld/roguelikeworld/player.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "899897e2a7ba47070d5ddb39e8036e35e1d21101b482d4ce90662e08abd6cc24"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/peera/onedrive/documents/github/roguelikeworld/roguelikeworld/roguelikeworld/player.hpp"
+          },
+          "hashes": {
+            "sha-256": "7297f6b58c5979fc5226a77d4d4b51cee187c20cff0011f4bb0c7989d3e5c316"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/peera/onedrive/documents/github/roguelikeworld/roguelikeworld/roguelikeworld/entity.hpp"
+          },
+          "hashes": {
+            "sha-256": "cfe02465d8588fabcd050e428676762773121cfda78e157540f91dbd04377c54"
+          }
+        }
+      ]
+    }
+  ]
+}
