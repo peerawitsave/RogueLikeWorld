@@ -19,9 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AutoMoveComponent.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="Entity.hpp" />
     <ClInclude Include="GameEngine.hpp" />
+    <ClInclude Include="Component.hpp" />
+    <ClInclude Include="Item.hpp" />
+    <ClInclude Include="json.hpp">
+      <DeploymentContent>true</DeploymentContent>
+    </ClInclude>
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="Player.hpp" />
   </ItemGroup>
@@ -29,9 +35,16 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\x64\Debug\settings.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\x64\Debug\map1.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
