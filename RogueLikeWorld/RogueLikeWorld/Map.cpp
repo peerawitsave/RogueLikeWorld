@@ -1,4 +1,6 @@
 #include "Map.hpp"
+#include "Entity.hpp"
+#include "Player.hpp"
 #include <iostream>
 #include <random>
 #include <algorithm>
@@ -89,9 +91,9 @@ namespace PW {
         std::random_device rd;
         std::mt19937 rng(rd());
 
-        const int MAX_ROOMS = 12;
-        const int MIN_ROOM_SIZE = 5;
-        const int MAX_ROOM_SIZE = 9;
+        const int MAX_ROOMS = 10;
+        const int MIN_ROOM_SIZE = 10;
+        const int MAX_ROOM_SIZE = 18;
 
         rooms.clear();
         tiles.assign(height, std::vector<char>(width, '#'));  // Fill with walls

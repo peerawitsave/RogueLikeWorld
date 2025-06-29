@@ -1,9 +1,2 @@
-﻿  AutoMoveComponent.cpp
-  Enemy.cpp
-  Entity.cpp
-  GameEngine.cpp
-  main.cpp
-  Map.cpp
-  Player.cpp
-  Generating Code...
+﻿  Map.cpp
   RogueLikeWorld.vcxproj -> C:\Users\Student\Desktop\Save\RogueLikeWorld\RogueLikeWorld\x64\Debug\RogueLikeWorld.exe
