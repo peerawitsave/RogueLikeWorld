@@ -39,9 +39,15 @@ namespace PW {
         void generateProcedural();
         const std::vector<Room>& getRooms() const { return rooms; }
 
+        void computeFOV(int px, int py, int radius = 8);
+        bool isVisible(int x, int y) const;
+        bool isExplored(int x, int y) const;
+
     private:
         int width, height;
         std::vector<std::vector<char>> tiles;
+        std::vector<std::vector<bool>> visible;
+        std::vector<std::vector<bool>> explored;
         std::vector<Room> rooms;
 
         void digRoom(const Room& room);

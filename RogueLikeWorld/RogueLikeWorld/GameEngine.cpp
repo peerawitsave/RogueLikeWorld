@@ -200,6 +200,7 @@ namespace PW {
             entityPtrs.push_back(e);
         }
 
+        map->computeFOV(player->getX(), player->getY());
         map->draw(entityPtrs, items, *player);
         std::cout << "HP: " << player->getHP() << "\n";
         std::cout << "[WASD] Move, [F] Attack, [X] Exit\n";

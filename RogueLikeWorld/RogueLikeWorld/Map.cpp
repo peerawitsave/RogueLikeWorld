@@ -4,11 +4,14 @@
 #include <iostream>
 #include <random>
 #include <algorithm>
+#include <cmath>
 
 namespace PW {
 
     Map::Map(int w, int h) : width(w), height(h) {
         tiles.resize(height, std::vector<char>(width, '#'));
+        visible.resize(height, std::vector<bool>(width, false));
+        explored.resize(height, std::vector<bool>(width, false));
     }
 
     void Map::draw(const std::vector<std::shared_ptr<Entity>>& entities,
@@ -16,33 +19,41 @@ namespace PW {
         const Player& player) {
         for (int y = 0; y < height; ++y) {
             for (int x = 0; x < width; ++x) {
-                char tile = tiles[y][x];
-                bool drawn = false;
+                if (!isExplored(x, y)) {
+                    std::cout << ' ';
+                    continue;
+                }
 
+                bool drawn = false;
                 if (player.getX() == x && player.getY() == y) {
                     std::cout << player.getSymbol();
                     continue;
                 }
 
-                for (const auto& e : entities) {
-                    if (e->getX() == x && e->getY() == y) {
-                        std::cout << e->getSymbol();
-                        drawn = true;
-                        break;
+                if (isVisible(x, y)) {
+                    for (const auto& e : entities) {
+                        if (e->getX() == x && e->getY() == y) {
+                            std::cout << e->getSymbol();
+                            drawn = true;
+                            break;
+                        }
                     }
-                }
 
-                if (drawn) continue;
-
-                for (const auto& item : items) {
-                    if (item.getX() == x && item.getY() == y) {
-                        std::cout << item.getSymbol();
-                        drawn = true;
-                        break;
+                    if (!drawn) {
+                        for (const auto& item : items) {
+                            if (item.getX() == x && item.getY() == y) {
+                                std::cout << item.getSymbol();
+                                drawn = true;
+                                break;
+                            }
+                        }
                     }
-                }
 
-                if (!drawn) std::cout << tile;
+                    if (!drawn) std::cout << tiles[y][x];
+                }
+                else {
+                    std::cout << '.';  // explored but not currently visible
+                }
             }
             std::cout << '\n';
         }
@@ -151,5 +162,32 @@ namespace PW {
 
     void Map::generate() {
         generateProcedural();
+    }
+
+    void Map::computeFOV(int px, int py, int radius) {
+        for (int y = 0; y < height; ++y)
+            for (int x = 0; x < width; ++x)
+                visible[y][x] = false;
+
+        for (int dy = -radius; dy <= radius; ++dy) {
+            for (int dx = -radius; dx <= radius; ++dx) {
+                int nx = px + dx;
+                int ny = py + dy;
+                if (nx >= 0 && ny >= 0 && nx < width && ny < height) {
+                    if (std::hypot(dx, dy) <= radius) {
+                        visible[ny][nx] = true;
+                        explored[ny][nx] = true;
+                    }
+                }
+            }
+        }
+    }
+
+    bool Map::isVisible(int x, int y) const {
+        return visible[y][x];
+    }
+
+    bool Map::isExplored(int x, int y) const {
+        return explored[y][x];
     }
 }
