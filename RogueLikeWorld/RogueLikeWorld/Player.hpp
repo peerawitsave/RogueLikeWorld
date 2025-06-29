@@ -12,6 +12,9 @@ namespace PW {
         void setHP(int value);
         void setSymbol(char s);
 
+        int& getMutableX() { return posX; }
+        int& getMutableY() { return posY; }
+
     private:
         int hp;
     };

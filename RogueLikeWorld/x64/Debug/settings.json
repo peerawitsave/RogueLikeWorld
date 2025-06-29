@@ -1,18 +1,29 @@
 {
-  "mapWidth": 40,
-  "mapHeight": 20,
+  "mapWidth": 80,
+  "mapHeight": 50,
   "player": {
     "hp": 100,
     "symbol": "@",
-    "x": 5,
-    "y": 5
+    "x": 0,
+    "y": 0
   },
   "items": [
     { "x": 10, "y": 5, "symbol": "!", "effect": 20 },
+    { "x": 10, "y": 5, "symbol": "!", "effect": 20 },
+    { "x": 10, "y": 5, "symbol": "!", "effect": 20 },
+    { "x": 30, "y": 10, "symbol": "^", "effect": -15 },
+    { "x": 30, "y": 10, "symbol": "^", "effect": -15 },
+    { "x": 30, "y": 10, "symbol": "^", "effect": -15 },
+    { "x": 30, "y": 10, "symbol": "^", "effect": -15 },
+    { "x": 30, "y": 10, "symbol": "^", "effect": -15 },
+    { "x": 30, "y": 10, "symbol": "^", "effect": -15 },
     { "x": 30, "y": 10, "symbol": "^", "effect": -15 }
   ],
   "enemies": [
     { "x": 15, "y": 5, "symbol": "E", "components": ["AutoMove"] },
-    { "x": 25, "y": 10, "symbol": "G", "components": ["AutoMove"] }
+    { "x": 45, "y": 8, "symbol": "G", "components": ["AutoMove"] },
+    { "x": 25, "y": 34, "symbol": "X", "components": ["AutoMove"] },
+    { "x": 55, "y": 1, "symbol": "Q", "components": ["AutoMove"] },
+    { "x": 20, "y": 41, "symbol": "T", "components": ["AutoMove"] }
   ]
 }

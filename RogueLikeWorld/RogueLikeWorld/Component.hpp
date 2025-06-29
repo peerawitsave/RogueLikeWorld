@@ -1,5 +1,5 @@
+// Component.hpp
 #pragma once
-#include "Entity.hpp"
 
 namespace PW {
     class Entity;
@@ -7,6 +7,6 @@ namespace PW {
     class Component {
     public:
         virtual ~Component() = default;
-        virtual void update(Entity& owner) = 0;
+        virtual void update(Entity& entity) = 0;
     };
 }

@@ -32,6 +32,7 @@
     <ClInclude Include="Player.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AutoMoveComponent.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GameEngine.cpp" />

@@ -89,12 +89,12 @@ namespace PW {
         std::random_device rd;
         std::mt19937 rng(rd());
 
-        const int MAX_ROOMS = 6;
-        const int MIN_ROOM_SIZE = 4;
-        const int MAX_ROOM_SIZE = 8;
+        const int MAX_ROOMS = 12;
+        const int MIN_ROOM_SIZE = 5;
+        const int MAX_ROOM_SIZE = 9;
 
         rooms.clear();
-        tiles.assign(height, std::vector<char>(width, '#'));
+        tiles.assign(height, std::vector<char>(width, '#'));  // Fill with walls
 
         std::uniform_int_distribution<int> roomSizeDist(MIN_ROOM_SIZE, MAX_ROOM_SIZE);
 
@@ -103,17 +103,20 @@ namespace PW {
             newRoom.width = roomSizeDist(rng);
             newRoom.height = roomSizeDist(rng);
 
-            if (width <= newRoom.width + 2 || height <= newRoom.height + 2)
+            // Ensure we leave 1 tile space between rooms and edge
+            if (width <= newRoom.width + 3 || height <= newRoom.height + 3)
                 continue;
 
-            std::uniform_int_distribution<int> posXDist(1, width - newRoom.width - 1);
-            std::uniform_int_distribution<int> posYDist(1, height - newRoom.height - 1);
+            std::uniform_int_distribution<int> posXDist(1, width - newRoom.width - 2);
+            std::uniform_int_distribution<int> posYDist(1, height - newRoom.height - 2);
             newRoom.x = posXDist(rng);
             newRoom.y = posYDist(rng);
 
             bool failed = false;
             for (const auto& room : rooms) {
-                if (newRoom.intersects(room)) {
+                // Expand room by 1 unit in all directions to leave space between
+                Room expanded = { room.x - 1, room.y - 1, room.width + 2, room.height + 2 };
+                if (newRoom.intersects(expanded)) {
                     failed = true;
                     break;
                 }
@@ -142,6 +145,7 @@ namespace PW {
             }
         }
     }
+
 
     void Map::generate() {
         generateProcedural();

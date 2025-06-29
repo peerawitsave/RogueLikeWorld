@@ -24,5 +24,7 @@
             std::unique_ptr<Player> player;
             std::vector<std::shared_ptr<Enemy>> enemies;
             std::vector<Item> items;
+            int* playerXPtr = nullptr;
+            int* playerYPtr = nullptr;
         };
     }

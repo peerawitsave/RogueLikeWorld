@@ -1,9 +1,10 @@
 #pragma once
+#include "Component.hpp"
 #include <vector>
 #include <memory>
-#include "Component.hpp"
 
 namespace PW {
+
     class Entity {
     public:
         Entity();
@@ -21,7 +22,7 @@ namespace PW {
         void takeDamage(int dmg);
         bool isAlive() const;
 
-        void addComponent(std::shared_ptr<Component> comp);
+        void addComponent(std::shared_ptr<PW::Component> comp);
         void updateComponents();
 
     protected:
@@ -29,6 +30,6 @@ namespace PW {
         char symbol = '@';
         int hp = 100;
 
-        std::vector<std::shared_ptr<Component>> components;
+        std::vector<std::shared_ptr<PW::Component>> components;
     };
 }
